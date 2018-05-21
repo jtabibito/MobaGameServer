@@ -1,4 +1,3 @@
-﻿  netbus.cc
-d:\moba_server\netbus\netbus.cc(37): warning C4477: “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“char **”
+﻿  cache_alloc.c
   MobaGameServer.vcxproj -> D:\Moba_Server\build\proj.Win\Debug\MobaGameServer.exe
   MobaGameServer.vcxproj -> D:\Moba_Server\build\proj.Win\Debug\MobaGameServer.pdb (Full PDB)

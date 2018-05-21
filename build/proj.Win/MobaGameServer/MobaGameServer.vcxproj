@@ -53,6 +53,7 @@
     <ClCompile Include="..\..\..\apps\test\main.cc" />
     <ClCompile Include="..\..\..\netbus\netbus.cc" />
     <ClCompile Include="..\..\..\netbus\session_uv.cc" />
+    <ClCompile Include="..\..\..\utils\cache_alloc.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\3rd\libuv\include\android-ifaddrs.h" />
@@ -83,6 +84,7 @@
     <ClInclude Include="..\..\..\netbus\netbus.h" />
     <ClInclude Include="..\..\..\netbus\session.h" />
     <ClInclude Include="..\..\..\netbus\session_uv.h" />
+    <ClInclude Include="..\..\..\utils\cache_alloc.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{34DB0E77-7EEE-4100-AB49-986ED97560F4}</ProjectGuid>

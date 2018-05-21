@@ -57,10 +57,11 @@ extern "C" {
 		uv_session* s = (uv_session*)stream->data;
 			// Á¬½Ó¶Ï¿ª
 		if (nread < 0) {
-			uv_shutdown_t* req = &(s->shutdown);
-			//uv_shutdown_t* req = (uv_shutdown_t*)malloc(sizeof(uv_shutdown_t));
-			memset(req, 0, sizeof(uv_shutdown_t));
-			uv_shutdown(req, stream, on_shutdown);
+			// uv_shutdown_t* req = &(s->shutdown);
+			// uv_shutdown_t* req = (uv_shutdown_t*)malloc(sizeof(uv_shutdown_t));
+			// memset(req, 0, sizeof(uv_shutdown_t));
+			// uv_shutdown(req, stream, on_shutdown);
+			s->close();
 			return;
 		}
 
@@ -113,4 +114,8 @@ void netbus::start_tcp_server(int port) {
 
 void netbus::run() {
 	uv_run(uv_default_loop(), UV_RUN_DEFAULT);
+}
+
+void netbus::init() {
+	init_session_allocer();
 }

@@ -16,8 +16,9 @@ public:
 	int client_port;
 	uv_tcp_t tcp_handle;
 	uv_shutdown_t shutdown;
-	uv_write_t w_req;
-	uv_buf_t w_buf;
+	bool isShutdown;	// ±‹√‚÷ÿ∏¥shutdown
+	/*uv_write_t w_req;
+	uv_buf_t w_buf;*/
 
 public:
 	char recv_buf[RECV_LEN];
@@ -37,5 +38,7 @@ public:
 	virtual void send_data(unsigned char* body, int len);
 	virtual const char* get_address(int* client_port);
 };
+
+void init_session_allocer();
 
 #endif // !__SESSION_UV_H__
