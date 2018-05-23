@@ -29,6 +29,12 @@
     <Filter Include="3rd\libuv\src\win">
       <UniqueIdentifier>{5a73c819-8285-4499-88be-563a9f2d8bc2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3rd\crypto">
+      <UniqueIdentifier>{0f541d61-95ea-4fa0-aff7-f237a27dc5fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\http_parser">
+      <UniqueIdentifier>{1c517d42-622d-4e89-93c1-f9a95a96520e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\apps\test\main.cc">
@@ -136,6 +142,24 @@
     <ClCompile Include="..\..\..\utils\cache_alloc.c">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\netbus\websocket.cc">
+      <Filter>netbus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\http_parser\http_parser.c">
+      <Filter>3rd\http_parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\crypto\base64_decoder.c">
+      <Filter>3rd\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\crypto\base64_encoder.c">
+      <Filter>3rd\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\crypto\md5.c">
+      <Filter>3rd\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\crypto\sha1.c">
+      <Filter>3rd\crypto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\3rd\libuv\include\android-ifaddrs.h">
@@ -224,6 +248,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\utils\cache_alloc.h">
       <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\netbus\websocket.h">
+      <Filter>netbus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\http_parser\http_parser.h">
+      <Filter>3rd\http_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\crypto\base64_decoder.h">
+      <Filter>3rd\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\crypto\base64_encoder.h">
+      <Filter>3rd\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\crypto\md5.h">
+      <Filter>3rd\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\crypto\sha1.h">
+      <Filter>3rd\crypto</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -24,6 +24,11 @@ public:
 	char recv_buf[RECV_LEN];
 	int recved;
 	int prototype;
+	char* long_pkg;
+	int longpkg_sz;
+
+public:
+	int isWS_shake;
 
 private:
 	void init_session();

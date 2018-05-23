@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MobaGameServer", "MobaGameServer\MobaGameServer.vcxproj", "{34DB0E77-7EEE-4100-AB49-986ED97560F4}"
 EndProject
@@ -13,8 +13,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{34DB0E77-7EEE-4100-AB49-986ED97560F4}.Debug|x64.ActiveCfg = Debug|x64
-		{34DB0E77-7EEE-4100-AB49-986ED97560F4}.Debug|x64.Build.0 = Debug|x64
+		{34DB0E77-7EEE-4100-AB49-986ED97560F4}.Debug|x64.ActiveCfg = Debug|Win32
+		{34DB0E77-7EEE-4100-AB49-986ED97560F4}.Debug|x64.Build.0 = Debug|Win32
 		{34DB0E77-7EEE-4100-AB49-986ED97560F4}.Debug|x86.ActiveCfg = Debug|Win32
 		{34DB0E77-7EEE-4100-AB49-986ED97560F4}.Debug|x86.Build.0 = Debug|Win32
 		{34DB0E77-7EEE-4100-AB49-986ED97560F4}.Release|x64.ActiveCfg = Release|x64
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {987B0CE9-87DD-488B-8013-95A70C67D1E2}
 	EndGlobalSection
 EndGlobal

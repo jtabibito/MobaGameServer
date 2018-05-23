@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,6 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\3rd\crypto\base64_decoder.c" />
+    <ClCompile Include="..\..\..\3rd\crypto\base64_encoder.c" />
+    <ClCompile Include="..\..\..\3rd\crypto\md5.c" />
+    <ClCompile Include="..\..\..\3rd\crypto\sha1.c" />
+    <ClCompile Include="..\..\..\3rd\http_parser\http_parser.c" />
     <ClCompile Include="..\..\..\3rd\libuv\src\fs-poll.c" />
     <ClCompile Include="..\..\..\3rd\libuv\src\inet.c" />
     <ClCompile Include="..\..\..\3rd\libuv\src\threadpool.c" />
@@ -53,9 +58,15 @@
     <ClCompile Include="..\..\..\apps\test\main.cc" />
     <ClCompile Include="..\..\..\netbus\netbus.cc" />
     <ClCompile Include="..\..\..\netbus\session_uv.cc" />
+    <ClCompile Include="..\..\..\netbus\websocket.cc" />
     <ClCompile Include="..\..\..\utils\cache_alloc.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\3rd\crypto\base64_decoder.h" />
+    <ClInclude Include="..\..\..\3rd\crypto\base64_encoder.h" />
+    <ClInclude Include="..\..\..\3rd\crypto\md5.h" />
+    <ClInclude Include="..\..\..\3rd\crypto\sha1.h" />
+    <ClInclude Include="..\..\..\3rd\http_parser\http_parser.h" />
     <ClInclude Include="..\..\..\3rd\libuv\include\android-ifaddrs.h" />
     <ClInclude Include="..\..\..\3rd\libuv\include\pthread-fixes.h" />
     <ClInclude Include="..\..\..\3rd\libuv\include\stdint-msvc2008.h" />
@@ -84,38 +95,39 @@
     <ClInclude Include="..\..\..\netbus\netbus.h" />
     <ClInclude Include="..\..\..\netbus\session.h" />
     <ClInclude Include="..\..\..\netbus\session_uv.h" />
+    <ClInclude Include="..\..\..\netbus\websocket.h" />
     <ClInclude Include="..\..\..\utils\cache_alloc.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{34DB0E77-7EEE-4100-AB49-986ED97560F4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MobaGameServer</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -155,7 +167,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Moba_Server\3rd\libuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
