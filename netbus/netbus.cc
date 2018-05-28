@@ -10,6 +10,7 @@ using namespace std;
 #include "session.h"
 #include "session_uv.h"
 #include "websocket.h"
+#include "tcp_protocol.h"
 #include "netbus.h"
 
 extern "C" {
@@ -20,6 +21,7 @@ extern "C" {
 	static void after_write(uv_write_t* req, int status);
 	static void on_recv_ws_data(uv_session* s);
 	static void on_recv_comm(uv_session* s, unsigned char* body, int len);
+	static void on_recv_tcp_data(uv_session* s);
 
 	static void
 	uv_connection(uv_stream_t* server, int status) {
@@ -102,7 +104,7 @@ extern "C" {
 				on_recv_ws_data(s);
 			}
 		} else {	// else TCP socket
-
+			on_recv_tcp_data(s);
 		}
 	}
 
@@ -163,6 +165,37 @@ extern "C" {
 		int len) {
 		printf("Client command !\n");
 		s->send_data(body, len);
+	}
+
+	static void
+	on_recv_tcp_data(uv_session* s) {
+		unsigned char* pkg_data = (unsigned char*)((s->long_pkg != NULL) ? s->long_pkg : s->recv_buf);
+		while (s->recved > 0) {
+			int pkg_sz = 0;
+			int head_sz = 0;
+			// pkg_sz - head_sz = body_sz;
+			if (tcp_protocol::read_header(pkg_data, s->recved, &pkg_sz, &head_sz) == -1) {
+				break;
+			}
+
+			if (s->recved < pkg_sz) {
+				break;
+			}
+
+			unsigned char* raw_data = pkg_data + head_sz;
+			on_recv_comm(s, raw_data, pkg_sz - head_sz);
+
+			if (s->recved > pkg_sz) {
+				memmove(pkg_data, pkg_data + pkg_sz, s->recved - pkg_sz);
+			}
+			s->recved -= pkg_sz;
+
+			if (s->recved == 0 && s->long_pkg != NULL) {
+				free(s->long_pkg);
+				s->long_pkg = NULL;
+				s->longpkg_sz = 0;
+			}
+		}
 	}
 }
 

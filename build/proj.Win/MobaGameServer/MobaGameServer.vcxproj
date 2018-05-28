@@ -58,6 +58,7 @@
     <ClCompile Include="..\..\..\apps\test\main.cc" />
     <ClCompile Include="..\..\..\netbus\netbus.cc" />
     <ClCompile Include="..\..\..\netbus\session_uv.cc" />
+    <ClCompile Include="..\..\..\netbus\tcp_protocol.cc" />
     <ClCompile Include="..\..\..\netbus\websocket.cc" />
     <ClCompile Include="..\..\..\utils\cache_alloc.c" />
   </ItemGroup>
@@ -95,6 +96,7 @@
     <ClInclude Include="..\..\..\netbus\netbus.h" />
     <ClInclude Include="..\..\..\netbus\session.h" />
     <ClInclude Include="..\..\..\netbus\session_uv.h" />
+    <ClInclude Include="..\..\..\netbus\tcp_protocol.h" />
     <ClInclude Include="..\..\..\netbus\websocket.h" />
     <ClInclude Include="..\..\..\utils\cache_alloc.h" />
   </ItemGroup>
@@ -108,7 +110,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

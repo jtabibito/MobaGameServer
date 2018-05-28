@@ -50,7 +50,7 @@ DestroyCacheAllocer(struct cache_allocer* allocer) {
 void*
 CacheAlloc(struct cache_allocer* allocer, int elementSize) {
 	if (allocer->elementSize < elementSize) {
-		return NULL;
+		return malloc(elementSize);
 	}
 
 	if (allocer->free_list != NULL) {

@@ -1,3 +1,5 @@
 ﻿  netbus.cc
-d:\moba_server\netbus\netbus.cc(40): warning C4477: “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“char **”
+d:\moba_server\netbus\netbus.cc(42): warning C4477: “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“char **”
+d:\moba_server\netbus\netbus.cc(177): warning C4806: “==”: 不安全操作: 从类型“bool”提升到类型“int”的值不能等于给定的常量
   MobaGameServer.vcxproj -> D:\Moba_Server\build\proj.Win\Debug\MobaGameServer.exe
+  MobaGameServer.vcxproj -> D:\Moba_Server\build\proj.Win\Debug\MobaGameServer.pdb (Full PDB)

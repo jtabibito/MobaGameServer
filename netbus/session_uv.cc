@@ -12,12 +12,17 @@ using namespace std;
 
 #include "../utils/cache_alloc.h"
 #include "websocket.h"
+#include "tcp_protocol.h"
 
 #define SESSION_CACHE_CAPACITY 5000
 #define WQ_CACHE_CAPACITY 4096
 
+#define WBUF_CACHE_CAPACITY 1024
+#define CMD_CACHE_SIZE 1024
+
 struct cache_allocer* session_allocer = NULL;
 static cache_allocer* wr_allocer = NULL;
+cache_allocer* wbuf_allocer = NULL;
 
 void init_session_allocer() {
 	if (session_allocer == NULL) {
@@ -26,6 +31,10 @@ void init_session_allocer() {
 
 	if (wr_allocer == NULL) {
 		wr_allocer = CreateCacheAllocer(WQ_CACHE_CAPACITY, sizeof(uv_write_t));
+	}
+
+	if (wbuf_allocer == NULL) {
+		wbuf_allocer = CreateCacheAllocer(WBUF_CACHE_CAPACITY, CMD_CACHE_SIZE);
 	}
 }
 
@@ -113,15 +122,26 @@ uv_session::send_data(unsigned char* body, int len) {
 	uv_write_t* w_req = (uv_write_t*)CacheAlloc(wr_allocer, sizeof(uv_write_t));
 	uv_buf_t w_buf;
 
-	if (this->prototype == WS_SOCKET && this->isWS_shake) {
-		int ws_pkg_len;
-		unsigned char* ws_pkg = ws_protocol::package_ws_data(body, len, &ws_pkg_len);
-		w_buf = uv_buf_init((char*)ws_pkg, ws_pkg_len);
-		uv_write(w_req, (uv_stream_t*)&(this->tcp_handle), &w_buf, 1, after_write);
-		ws_protocol::free_package_data(ws_pkg);
+	if (this->prototype == WS_SOCKET) {
+		if (this->isWS_shake) {
+			int ws_pkg_len;
+			unsigned char* ws_pkg = ws_protocol::package_ws_data(body, len, &ws_pkg_len);
+			w_buf = uv_buf_init((char*)ws_pkg, ws_pkg_len);
+			uv_write(w_req, (uv_stream_t*)&(this->tcp_handle), &w_buf, 1, after_write);
+			ws_protocol::free_package_data(ws_pkg);
+		}
+		else {
+			w_buf = uv_buf_init((char*)body, len);
+			uv_write(w_req, (uv_stream_t*)&(this->tcp_handle), &w_buf, 1, after_write);
+		}
 	} else {
-		w_buf = uv_buf_init((char*)body, len);
+		// w_buf = uv_buf_init((char*)body, len);
+		// uv_write(w_req, (uv_stream_t*)&(this->tcp_handle), &w_buf, 1, after_write);
+		int tcp_pkg_len;
+		unsigned char* tcp_pkg = tcp_protocol::package(body, len, &tcp_pkg_len);
+		w_buf = uv_buf_init((char*)tcp_pkg, tcp_pkg_len);
 		uv_write(w_req, (uv_stream_t*)&(this->tcp_handle), &w_buf, 1, after_write);
+		tcp_protocol::release_package(tcp_pkg);
 	}
 }
 

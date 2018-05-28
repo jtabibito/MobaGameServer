@@ -12,7 +12,9 @@ using namespace std;
 
 #include "session.h"
 #include "websocket.h"
+#include "../utils/cache_alloc.h"
 
+extern cache_allocer* wbuf_allocer = NULL;
 
 static int is_sec_key = 0;
 static int has_sec_key = 0;
@@ -155,7 +157,8 @@ ws_protocol::package_ws_data(const unsigned char* raw_data,
 		return NULL;
 	}
 
-	unsigned char* dbuf = (unsigned char*)malloc(head_sz + len);
+	// unsigned char* dbuf = (unsigned char*)malloc(head_sz + len);
+	unsigned char* dbuf = (unsigned char*)CacheAlloc(wbuf_allocer, head_sz + len);
 	dbuf[0] = 0x81;
 	if (len <= 125) {
 		dbuf[1] = len;
@@ -172,5 +175,6 @@ ws_protocol::package_ws_data(const unsigned char* raw_data,
 
 void
 ws_protocol::free_package_data(unsigned char* ws_pkg) {
-	free(ws_pkg);
+	// free(ws_pkg);
+	CacheFree(wbuf_allocer, ws_pkg);
 }
