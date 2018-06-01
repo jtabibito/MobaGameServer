@@ -14,7 +14,7 @@ using namespace std;
 #include "websocket.h"
 #include "../utils/cache_alloc.h"
 
-extern cache_allocer* wbuf_allocer = NULL;
+extern cache_allocer* wbuf_allocer;
 
 static int is_sec_key = 0;
 static int has_sec_key = 0;

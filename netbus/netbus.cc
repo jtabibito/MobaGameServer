@@ -12,6 +12,7 @@ using namespace std;
 #include "websocket.h"
 #include "tcp_protocol.h"
 #include "netbus.h"
+#include "proto_man.h"
 
 extern "C" {
 	static void uv_alloc_buf(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf);
@@ -164,7 +165,19 @@ extern "C" {
 		unsigned char* body,
 		int len) {
 		printf("Client command !\n");
-		s->send_data(body, len);
+		
+		// test
+		struct cmd_msg* msg = NULL;
+		if (proto_man::decode_cmd_msg(body, len, &msg)) {
+			unsigned char* encode_pkg = NULL;
+			int encode_len;
+			encode_pkg = proto_man::encode_msg_to_raw(msg, &encode_len);
+			if (encode_pkg) {
+				s->send_data(encode_pkg, encode_len);
+				proto_man::msg_raw_free(encode_pkg);
+			}
+			proto_man::cmd_msg_free(msg);
+		}
 	}
 
 	static void

@@ -5,7 +5,7 @@
 #include "tcp_protocol.h"
 #include "../utils/cache_alloc.h"
 
-extern cache_allocer* wbuf_allocer = NULL;
+extern cache_allocer* wbuf_allocer;
 
 bool
 tcp_protocol::read_header(unsigned char* data,

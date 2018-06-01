@@ -55,8 +55,12 @@
     <ClCompile Include="..\..\..\3rd\libuv\src\win\util.c" />
     <ClCompile Include="..\..\..\3rd\libuv\src\win\winapi.c" />
     <ClCompile Include="..\..\..\3rd\libuv\src\win\winsock.c" />
+    <ClCompile Include="..\..\..\3rd\mjson\json.c" />
     <ClCompile Include="..\..\..\apps\test\main.cc" />
+    <ClCompile Include="..\..\..\apps\test\proto\game.pb.cc" />
+    <ClCompile Include="..\..\..\apps\test\proto\pf_cmd_map.cc" />
     <ClCompile Include="..\..\..\netbus\netbus.cc" />
+    <ClCompile Include="..\..\..\netbus\proto_man.cc" />
     <ClCompile Include="..\..\..\netbus\session_uv.cc" />
     <ClCompile Include="..\..\..\netbus\tcp_protocol.cc" />
     <ClCompile Include="..\..\..\netbus\websocket.cc" />
@@ -93,7 +97,11 @@
     <ClInclude Include="..\..\..\3rd\libuv\src\win\stream-inl.h" />
     <ClInclude Include="..\..\..\3rd\libuv\src\win\winapi.h" />
     <ClInclude Include="..\..\..\3rd\libuv\src\win\winsock.h" />
+    <ClInclude Include="..\..\..\3rd\mjson\json.h" />
+    <ClInclude Include="..\..\..\apps\test\proto\game.pb.h" />
+    <ClInclude Include="..\..\..\apps\test\proto\pf_cmd_map.h" />
     <ClInclude Include="..\..\..\netbus\netbus.h" />
+    <ClInclude Include="..\..\..\netbus\proto_man.h" />
     <ClInclude Include="..\..\..\netbus\session.h" />
     <ClInclude Include="..\..\..\netbus\session_uv.h" />
     <ClInclude Include="..\..\..\netbus\tcp_protocol.h" />
@@ -110,7 +118,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -170,12 +178,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Moba_Server\3rd\libuv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Moba_Server\3rd\libuv\include;D:\Moba_Server\3rd\protobuf-3.5.1\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>ws2_32.lib Iphlpapi.lib Psapi.lib Userenv.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>ws2_32.lib Iphlpapi.lib Psapi.lib Userenv.lib libprotobufd.lib libprotocd.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>D:\Moba_Server\build\proj.Win\protobuf_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
