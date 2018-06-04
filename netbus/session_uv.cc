@@ -13,6 +13,8 @@ using namespace std;
 #include "../utils/cache_alloc.h"
 #include "websocket.h"
 #include "tcp_protocol.h"
+#include "proto_man.h"
+#include "service_man.h"
 
 #define SESSION_CACHE_CAPACITY 5000
 #define WQ_CACHE_CAPACITY 4096
@@ -107,6 +109,10 @@ uv_session::close() {
 		return;
 	}
 
+	// broadcast player lose connection
+	service_man::on_session_disconnect(this);
+	// end
+
 	this->isShutdown = true;
 	uv_shutdown_t* req = &(this->shutdown);
 	memset(req, 0, sizeof(uv_shutdown_t));
@@ -149,4 +155,15 @@ const char*
 uv_session::get_address(int* client_port) {
 	*client_port = this->client_port;
 	return *(this->ipaddr);
+}
+
+void
+uv_session::send_msg(struct cmd_msg* msg) {
+	unsigned char* encode_pkg = NULL;
+	int encode_len;
+	encode_pkg = proto_man::encode_msg_to_raw(msg, &encode_len);
+	if (encode_pkg) {
+		this->send_data(encode_pkg, encode_len);
+		proto_man::msg_raw_free(encode_pkg);
+	}
 }

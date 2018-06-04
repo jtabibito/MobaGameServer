@@ -61,6 +61,8 @@
     <ClCompile Include="..\..\..\apps\test\proto\pf_cmd_map.cc" />
     <ClCompile Include="..\..\..\netbus\netbus.cc" />
     <ClCompile Include="..\..\..\netbus\proto_man.cc" />
+    <ClCompile Include="..\..\..\netbus\service.cc" />
+    <ClCompile Include="..\..\..\netbus\service_man.cc" />
     <ClCompile Include="..\..\..\netbus\session_uv.cc" />
     <ClCompile Include="..\..\..\netbus\tcp_protocol.cc" />
     <ClCompile Include="..\..\..\netbus\websocket.cc" />
@@ -102,6 +104,8 @@
     <ClInclude Include="..\..\..\apps\test\proto\pf_cmd_map.h" />
     <ClInclude Include="..\..\..\netbus\netbus.h" />
     <ClInclude Include="..\..\..\netbus\proto_man.h" />
+    <ClInclude Include="..\..\..\netbus\service.h" />
+    <ClInclude Include="..\..\..\netbus\service_man.h" />
     <ClInclude Include="..\..\..\netbus\session.h" />
     <ClInclude Include="..\..\..\netbus\session_uv.h" />
     <ClInclude Include="..\..\..\netbus\tcp_protocol.h" />
