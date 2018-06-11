@@ -67,6 +67,8 @@
     <ClCompile Include="..\..\..\netbus\tcp_protocol.cc" />
     <ClCompile Include="..\..\..\netbus\websocket.cc" />
     <ClCompile Include="..\..\..\utils\cache_alloc.c" />
+    <ClCompile Include="..\..\..\utils\timelist.c" />
+    <ClCompile Include="..\..\..\utils\timestamp.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\3rd\crypto\base64_decoder.h" />
@@ -111,6 +113,8 @@
     <ClInclude Include="..\..\..\netbus\tcp_protocol.h" />
     <ClInclude Include="..\..\..\netbus\websocket.h" />
     <ClInclude Include="..\..\..\utils\cache_alloc.h" />
+    <ClInclude Include="..\..\..\utils\timelist.h" />
+    <ClInclude Include="..\..\..\utils\timestamp.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{34DB0E77-7EEE-4100-AB49-986ED97560F4}</ProjectGuid>
