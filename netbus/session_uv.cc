@@ -46,7 +46,7 @@ extern "C" {
 	static void 
 	after_write(uv_write_t* req, int status) {
 		if (status == 0) {
-			printf("write success\n");
+			// printf("write success\n");
 		}
 		// free(req);
 		CacheFree(wr_allocer, req);
@@ -59,7 +59,7 @@ extern "C" {
 
 	static void
 	on_close(uv_handle_t* handle) {
-		printf("close client\n");
+		// printf("close client\n");
 		uv_session* s = (uv_session*)handle->data;
 		uv_session::destroy(s);
 	}

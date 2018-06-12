@@ -9,6 +9,7 @@ using namespace std;
 #include "uv.h"
 #include "session.h"
 #include "session_uv.h"
+#include "udp_session.h"
 #include "websocket.h"
 #include "tcp_protocol.h"
 #include "netbus.h"
@@ -22,7 +23,7 @@ extern "C" {
 	static void	on_close(uv_handle_t* handle);
 	static void after_write(uv_write_t* req, int status);
 	static void on_recv_ws_data(uv_session* s);
-	static void on_recv_comm(uv_session* s, unsigned char* body, int len);
+	static void on_recv_comm(session* s, unsigned char* body, int len);
 	static void on_recv_tcp_data(uv_session* s);
 
 	static void
@@ -41,10 +42,53 @@ extern "C" {
 		uv_ip4_name(&addr, (char*)s->ipaddr, 64);
 		s->client_port = ntohs(addr.sin_port);
 		s->prototype = (int)(server->data);
-		printf("new client ip %s & port %d\n", s->ipaddr, s->client_port);
+		// printf("new client ip %s & port %d\n", s->ipaddr, s->client_port);
 
 		// 使用eventloop管理事件
 		uv_read_start((uv_stream_t*)client, uv_alloc_buf, after_read);
+	}
+
+	struct udp_recv_buf {
+		char* recv_buf;
+		size_t max_recv_size;
+	};
+
+	static void
+	udp_uv_alloc_buf(uv_handle_t* handle,
+		size_t suggested_size,
+		uv_buf_t* buf) {
+
+		suggested_size = (suggested_size < 8192) ? 8192 : suggested_size;
+
+		struct udp_recv_buf* udp_buf = (struct udp_recv_buf*)handle->data;
+		if (udp_buf->max_recv_size < suggested_size) {
+			if (udp_buf->recv_buf) {
+				// 释放掉buf空间
+				free(udp_buf->recv_buf);
+				udp_buf->recv_buf = NULL;
+			}
+			udp_buf->max_recv_size = suggested_size;
+			udp_buf->recv_buf = (char*)malloc(udp_buf->max_recv_size);
+		}
+
+		buf->base = udp_buf->recv_buf;
+		buf->len = udp_buf->max_recv_size;
+	}
+
+	static void
+	after_uv_udp_recv(uv_udp_t* handle,
+        ssize_t nread,
+        const uv_buf_t* buf,
+        const struct sockaddr* addr,
+        unsigned flags) {
+
+		udp_session udp_s;
+		udp_s.udp_handle = handle;
+		udp_s.addr = addr;
+		uv_ip4_name((const sockaddr_in*)addr, udp_s.c_address, 32);
+		udp_s.c_port = ntohs(((const sockaddr_in*)addr)->sin_port);
+
+		on_recv_comm((session*)&udp_s, (unsigned char*)buf->base, nread);
 	}
 
 	static void
@@ -117,7 +161,7 @@ extern "C" {
 
 	static void
 	on_close(uv_handle_t* handle) {
-		printf("Client Closed\n");
+		// printf("Client Closed\n");
 		uv_session* s = (uv_session*)handle->data;
 		uv_session::destroy(s);
 	}
@@ -129,7 +173,7 @@ extern "C" {
 			int pkg_sz = 0;
 			int head_sz = 0;
 			if (pkg_data[0] == 0x88) {
-				printf("Web用户退出\n");
+				// printf("Web用户退出\n");
 				s->close();
 				break;
 			}
@@ -146,7 +190,7 @@ extern "C" {
 			unsigned char* mark = raw_data - 4;
 			ws_protocol::parser_ws_recv_data(raw_data, mark, pkg_sz - head_sz);
 
-			on_recv_comm(s, raw_data, pkg_sz - head_sz);
+			on_recv_comm((session*)s, raw_data, pkg_sz - head_sz);
 
 			if (s->recved > pkg_sz) {
 				memmove(pkg_data, pkg_data + pkg_sz, s->recved - pkg_sz);
@@ -162,10 +206,10 @@ extern "C" {
 	}
 
 	static void
-	on_recv_comm(uv_session* s,
+	on_recv_comm(session* s,
 		unsigned char* body,
 		int len) {
-		printf("Client command !\n");
+		// printf("Client command !\n");
 		
 		// test
 		struct cmd_msg* msg = NULL;
@@ -201,7 +245,7 @@ extern "C" {
 			}
 
 			unsigned char* raw_data = pkg_data + head_sz;
-			on_recv_comm(s, raw_data, pkg_sz - head_sz);
+			on_recv_comm((session*)s, raw_data, pkg_sz - head_sz);
 
 			if (s->recved > pkg_sz) {
 				memmove(pkg_data, pkg_data + pkg_sz, s->recved - pkg_sz);
@@ -222,7 +266,8 @@ netbus* netbus::instance() {
 	return &g_netbus;
 }
 
-void netbus::start_tcp_server(int port) {
+void
+netbus::start_tcp_server(int port) {
 	uv_tcp_t* listen = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
 	memset(listen, 0, sizeof(uv_tcp_t));
 
@@ -233,7 +278,7 @@ void netbus::start_tcp_server(int port) {
 	int ret = uv_tcp_bind(listen, (const sockaddr*)&addr, 0);
 	// 让event loop做监听管理, 当有人连接时eventloop就调用用户指定的处理函数uv_connection
 	if (ret != 0) {
-		cout << "Bind Error\n";
+		// printf("Bind Error\n");
 		free(listen);
 		return;
 	}
@@ -242,7 +287,27 @@ void netbus::start_tcp_server(int port) {
 	listen->data = (void*)TCP_SOCKET;
 }
 
-void netbus::start_ws_server(int port) {
+void
+netbus::start_udp_server(int port) {
+	uv_udp_t* server = (uv_udp_t*)malloc(sizeof(uv_udp_t));
+	memset(server, 0, sizeof(uv_udp_t));
+
+	uv_udp_init(uv_default_loop(), server);
+
+	struct udp_recv_buf* udp_buf = (struct udp_recv_buf*)malloc(sizeof(struct udp_recv_buf));
+	memset(udp_buf, 0, sizeof(struct udp_recv_buf));
+
+	server->data = udp_buf;
+
+	struct sockaddr_in addr;
+	uv_ip4_addr("0.0.0.0", port, &addr);
+	uv_udp_bind(server, (const struct sockaddr*)&addr, 0);
+	
+	uv_udp_recv_start(server, udp_uv_alloc_buf, after_uv_udp_recv);
+}
+
+void
+netbus::start_ws_server(int port) {
 	uv_tcp_t* listen = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
 	memset(listen, 0, sizeof(uv_tcp_t));
 
@@ -253,7 +318,7 @@ void netbus::start_ws_server(int port) {
 	int ret = uv_tcp_bind(listen, (const sockaddr*)&addr, 0);
 	// 让event loop做监听管理, 当有人连接时eventloop就调用用户指定的处理函数uv_connection
 	if (ret != 0) {
-		cout << "Bind Error\n";
+		// printf("Bind Error\n");
 		free(listen);
 		return;
 	}
@@ -262,11 +327,13 @@ void netbus::start_ws_server(int port) {
 	listen->data = (void*)WS_SOCKET;
 }
 
-void netbus::run() {
+void
+netbus::run() {
 	uv_run(uv_default_loop(), UV_RUN_DEFAULT);
 }
 
-void netbus::init() {
+void
+netbus::init() {
 	service_man::init();
 	init_session_allocer();
 }

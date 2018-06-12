@@ -1,17 +1,23 @@
-﻿  timelist.c
+﻿  timestamp.c
+d:\moba_server\utils\timestamp.c(428): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\time.h(505): note: 参见“localtime”的声明
+d:\moba_server\utils\timestamp.c(437): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\time.h(505): note: 参见“localtime”的声明
   main.cc
   netbus.cc
-d:\moba_server\netbus\netbus.cc(44): warning C4477: “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“char **”
-d:\moba_server\netbus\netbus.cc(195): warning C4806: “==”: 不安全操作: 从类型“bool”提升到类型“int”的值不能等于给定的常量
-  service.cc
-  service_man.cc
-  session_uv.cc
-  websocket.cc
-d:\moba_server\netbus\websocket.cc(54): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: 参见“strncpy”的声明
-d:\moba_server\netbus\websocket.cc(82): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+d:\moba_server\netbus\netbus.cc(45): warning C4477: “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“char **”
+d:\moba_server\netbus\netbus.cc(239): warning C4806: “==”: 不安全操作: 从类型“bool”提升到类型“int”的值不能等于给定的常量
+  udp_session.cc
+  logManager.cc
+d:\moba_server\utils\logmanager.cc(63): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: 参见“sprintf”的声明
-d:\moba_server\netbus\websocket.cc(88): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+d:\moba_server\utils\logmanager.cc(74): warning C4996: 'gmtime': This function or variable may be unsafe. Consider using gmtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\time.h(495): note: 参见“gmtime”的声明
+d:\moba_server\utils\logmanager.cc(91): warning C4996: 'gmtime': This function or variable may be unsafe. Consider using gmtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\time.h(495): note: 参见“gmtime”的声明
+d:\moba_server\utils\logmanager.cc(96): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: 参见“sprintf”的声明
+d:\moba_server\utils\logmanager.cc(119): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: 参见“sprintf”的声明
   正在生成代码...
 libprotobufd.lib(arena.obj) : warning LNK4099: 未找到 PDB“libprotobuf.pdb”(使用“libprotobufd.lib(arena.obj)”或在“D:\Moba_Server\build\proj.Win\Debug\libprotobuf.pdb”中寻找)；正在链接对象，如同没有调试信息一样

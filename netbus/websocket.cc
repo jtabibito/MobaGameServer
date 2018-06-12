@@ -75,7 +75,7 @@ ws_protocol::ws_shake_hand(session* s, char* body, int len) {
 	http_parser_execute(&p, &settings, body, len);
 
 	if (has_sec_key && is_shake_end) {
-		printf("Sec-WebSocket-Key: %s\n", value_sec_key);
+		// printf("Sec-WebSocket-Key: %s\n", value_sec_key);
 		static char key_migic[512];
 		static char sha1_key_migic[SHA1_DIGEST_SIZE];
 		static char sendto_client[512];

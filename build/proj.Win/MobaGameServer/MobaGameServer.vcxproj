@@ -65,8 +65,10 @@
     <ClCompile Include="..\..\..\netbus\service_man.cc" />
     <ClCompile Include="..\..\..\netbus\session_uv.cc" />
     <ClCompile Include="..\..\..\netbus\tcp_protocol.cc" />
+    <ClCompile Include="..\..\..\netbus\udp_session.cc" />
     <ClCompile Include="..\..\..\netbus\websocket.cc" />
     <ClCompile Include="..\..\..\utils\cache_alloc.c" />
+    <ClCompile Include="..\..\..\utils\logManager.cc" />
     <ClCompile Include="..\..\..\utils\timelist.c" />
     <ClCompile Include="..\..\..\utils\timestamp.c" />
   </ItemGroup>
@@ -111,8 +113,10 @@
     <ClInclude Include="..\..\..\netbus\session.h" />
     <ClInclude Include="..\..\..\netbus\session_uv.h" />
     <ClInclude Include="..\..\..\netbus\tcp_protocol.h" />
+    <ClInclude Include="..\..\..\netbus\udp_session.h" />
     <ClInclude Include="..\..\..\netbus\websocket.h" />
     <ClInclude Include="..\..\..\utils\cache_alloc.h" />
+    <ClInclude Include="..\..\..\utils\logManager.h" />
     <ClInclude Include="..\..\..\utils\timelist.h" />
     <ClInclude Include="..\..\..\utils\timestamp.h" />
   </ItemGroup>

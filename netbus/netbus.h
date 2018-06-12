@@ -8,7 +8,8 @@ public:
 public:
 	void init();
 	void start_tcp_server(int port);	// 提供启动tcp协议的端口
-	void start_ws_server(int port);		// 提供web协议端口
+	void start_udp_server(int port);	// 提供启动udp协议的端口
+	void start_ws_server(int port);		// 提供启动web服务的端口
 	void run();
 };
 
