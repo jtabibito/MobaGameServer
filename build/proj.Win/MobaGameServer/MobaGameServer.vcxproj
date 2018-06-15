@@ -59,6 +59,7 @@
     <ClCompile Include="..\..\..\apps\test\main.cc" />
     <ClCompile Include="..\..\..\apps\test\proto\game.pb.cc" />
     <ClCompile Include="..\..\..\apps\test\proto\pf_cmd_map.cc" />
+    <ClCompile Include="..\..\..\db\mysql_wrapper.cc" />
     <ClCompile Include="..\..\..\netbus\netbus.cc" />
     <ClCompile Include="..\..\..\netbus\proto_man.cc" />
     <ClCompile Include="..\..\..\netbus\service.cc" />
@@ -106,6 +107,7 @@
     <ClInclude Include="..\..\..\3rd\mjson\json.h" />
     <ClInclude Include="..\..\..\apps\test\proto\game.pb.h" />
     <ClInclude Include="..\..\..\apps\test\proto\pf_cmd_map.h" />
+    <ClInclude Include="..\..\..\db\mysql_wrapper.h" />
     <ClInclude Include="..\..\..\netbus\netbus.h" />
     <ClInclude Include="..\..\..\netbus\proto_man.h" />
     <ClInclude Include="..\..\..\netbus\service.h" />
@@ -190,14 +192,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Moba_Server\3rd\libuv\include;D:\Moba_Server\3rd\protobuf-3.5.1\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Moba_Server\3rd\libuv\include;D:\Moba_Server\3rd\protobuf-3.5.1\src;D:\Moba_Server\build\proj.Win\mysqlclient\mysql.x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalOptions>ws2_32.lib Iphlpapi.lib Psapi.lib Userenv.lib libprotobufd.lib libprotocd.lib %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalLibraryDirectories>D:\Moba_Server\build\proj.Win\protobuf_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Moba_Server\build\proj.Win\protobuf_lib;D:\Moba_Server\build\proj.Win\mysqlclient\mysql.x86\lib\vs12;D:\Moba_Server\build\proj.Win\mysqlclient\mysql.x86\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
