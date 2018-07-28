@@ -129,7 +129,7 @@ after_close_complete(uv_work_t* req, int status) {
 }
 
 void
-mysql_wrapper::close(void* context) {
+mysql_wrapper::close_mysql(void* context) {
 	struct mysql_context* c = (struct mysql_context*)context;
 	if (c->is_closed) {
 		return;
