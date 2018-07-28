@@ -11,6 +11,9 @@ using namespace std;
 #include "proto/pf_cmd_map.h"
 #include "../../db/mysql_wrapper.h"
 #include "../../db/redis_wrapper.h"
+#include "../../utils/logManager.h"
+#include "../../utils/timestamp.h"
+#include "../../scripts/lua_wrapper.h"
 
 static void
 on_query_cb(const char* err, std::vector<std::vector<std::string>>* result) {
@@ -69,10 +72,12 @@ test_redisdb() {
 
 int main(int argc, char* argv[]) {
 
-	test_redisdb();
-
 	proto_man::init(PROTO_BUF);
 	init_pf_cmd_map();
+	log::init("/Moba_Server/apps/DebugLog", "TestDebugLog", true);
+
+	log_debug("%d", timestamp());
+	log_debug("%d", timestamp_today());
 
 	netbus::instance()->init();
 	netbus::instance()->start_tcp_server(6080);
@@ -80,6 +85,11 @@ int main(int argc, char* argv[]) {
 	netbus::instance()->start_ws_server(8001);
 	netbus::instance()->start_udp_server(8002);
 
+	lua_wrapper::init();
+	lua_wrapper::entry_lua_file("./main.lua");
+
 	netbus::instance()->run();
+	lua_wrapper::exit();
+	
 	return 0;
 }

@@ -1,8 +1,4 @@
-﻿  redis_wrapper.cc
-d:\moba_server\db\redis_wrapper.cc(46): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(538): note: 参见“strdup”的声明
-d:\moba_server\db\redis_wrapper.cc(87): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(538): note: 参见“strdup”的声明
-d:\moba_server\db\redis_wrapper.cc(196): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(538): note: 参见“strdup”的声明
+﻿  main.cc
+  lua_wrapper.cc
+  正在生成代码...
   MobaGameServer.vcxproj -> D:\Moba_Server\build\proj.Win\Debug\MobaGameServer.exe
