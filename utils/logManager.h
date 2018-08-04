@@ -1,15 +1,15 @@
 #ifndef __LOGMANAGER_H__
 #define __LOGMANAGER_H__
 
-enum {
+enum log_info {
 	DEBUG = 0,
-	WARING,
+	WARNING,
 	WRONG,
 };
 
 #define log_debug(msg, ...) log::write2log(__FILE__, __LINE__, DEBUG, msg, ## __VA_ARGS__);
-#define log_waring(msg, ...) log::write2log(__FILE__, __LINE__, WARING, msg, ## __VA_ARGS__);
-#define log_wrong(msg, ...) log::write2log(__FILE__, __LINE__, WRONG, msg, ## __VA_ARGS__);
+#define log_warning(msg, ...) log::write2log(__FILE__, __LINE__, WARNING, msg, ## __VA_ARGS__);
+#define log_error(msg, ...) log::write2log(__FILE__, __LINE__, WRONG, msg, ## __VA_ARGS__);
 
 class log {
 public:

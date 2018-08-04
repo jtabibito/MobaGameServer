@@ -1,1 +1,2 @@
-print("Hello World!")
+--print("Hello World!")
+log_debug("Hello World!");
