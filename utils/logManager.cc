@@ -22,7 +22,7 @@ static uint32_t g_current_day;
 static uint32_t g_last_second;
 static char g_format_time[64] = { 0 };
 
-static char* g_log_modle[] = { " DEBUG ", " WARING ", " WRONG " };
+static char* g_log_modle[] = { " DEBUG ", " WARING ", " ERROR " };
 
 void
 log::init(char* path,

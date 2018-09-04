@@ -1,0 +1,34 @@
+2018-08-12 17:24:49 DEBUG d:\moba_server\apps\test\main.cc:79
+1534065889
+2018-08-12 17:24:49 DEBUG d:\moba_server\apps\test\main.cc:80
+1534003200
+2018-08-12 17:24:49 ERROR trunk:0
+attempt to call a string value
+2018-08-12 18:06:05 DEBUG d:\moba_server\apps\test\main.cc:79
+1534068365
+2018-08-12 18:06:05 DEBUG d:\moba_server\apps\test\main.cc:80
+1534003200
+2018-08-12 18:06:05 DEBUG ./main.lua:2
+Hello World!
+2018-08-12 19:18:26 DEBUG d:\moba_server\apps\test\main.cc:79
+1534072706
+2018-08-12 19:18:26 DEBUG d:\moba_server\apps\test\main.cc:80
+1534003200
+2018-08-12 19:18:26 DEBUG ./main.lua:2
+Hello World!
+2018-08-12 19:18:56 DEBUG d:\moba_server\apps\test\main.cc:79
+1534072736
+2018-08-12 19:18:56 DEBUG d:\moba_server\apps\test\main.cc:80
+1534003200
+2018-08-12 19:18:56 DEBUG ./main.lua:2
+Hello World!
+2018-08-12 19:18:57 DEBUG ./main.lua:4
+call event
+2018-08-12 19:22:59 DEBUG d:\moba_server\apps\test\main.cc:79
+1534072979
+2018-08-12 19:22:59 DEBUG d:\moba_server\apps\test\main.cc:80
+1534003200
+2018-08-12 19:22:59 DEBUG ./main.lua:2
+Hello World!
+2018-08-12 19:23:18 DEBUG ./main.lua:4
+call event

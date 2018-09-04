@@ -23,10 +23,11 @@ struct connect_req {
 	char* ip;
 	int port;
 
-	void (*open_cb)(const char* err, void* context);
+	void (*open_cb)(const char* err, void* context, void* udata);
 
 	char* err;
 	void* context;
+	void* udata;
 };
 
 struct redis_context {
@@ -60,7 +61,7 @@ connect_work(uv_work_t* req) {
 static void
 after_connwork_complete(uv_work_t* req, int status) {
 	struct connect_req* connReq = (struct connect_req*)req->data;
-	connReq->open_cb(connReq->err, connReq->context);
+	connReq->open_cb(connReq->err, connReq->context, connReq->udata);
 
 	if (connReq->ip) {
 		free(connReq->ip);
@@ -76,8 +77,8 @@ after_connwork_complete(uv_work_t* req, int status) {
 void
 redis_wrapper::connect(char* ip,
 	int port,
-	void (*open_cb)(const char* err,
-		void* context)) {
+	void (*open_cb)(const char* err, void* context, void* udata),
+	void* udata) {
 	uv_work_t* w = (uv_work_t*)my_malloc(sizeof(uv_work_t));
 	memset(w, 0, sizeof(uv_work_t));
 
@@ -86,9 +87,10 @@ redis_wrapper::connect(char* ip,
 
 	req->ip = strdup(ip);
 	req->port = port;
+	req->udata = udata;
 	req->open_cb = open_cb;
-
 	w->data = req;
+
 	uv_queue_work(uv_default_loop(), w, connect_work, after_connwork_complete);
 }
 
@@ -127,7 +129,7 @@ redis_wrapper::close_redis(void* context) {
 
 	c->is_closed = 1;
 
-	close_work(w);
+	// close_work(w);
 	uv_queue_work(uv_default_loop(), w, close_work, after_close_complete);
 }
 
@@ -135,10 +137,11 @@ redis_wrapper::close_redis(void* context) {
 struct query_req {
 	void* context;
 	char* cmd;
-	void(*query_cb)(const char* err, redisReply* result);
+	void(*query_cb)(const char* err, redisReply* result, void* udata);
 
 	char* err;
 	redisReply* result;
+	void* udata;
 };
 
 static void
@@ -149,10 +152,14 @@ query_work(uv_work_t* req) {
 	redisContext* rc = (redisContext*)r2mysql->pConnContext;
 
 	uv_mutex_lock(&(r2mysql->lock));
-	r->err = NULL;
 	redisReply* reply = (redisReply*)redisCommand(rc, r->cmd);
-	if (reply) {
+	if (reply->type == REDIS_REPLY_ERROR) {
+		r->err = strdup(reply->str);
+		r->result = NULL;
+		freeReplyObject(reply);
+	} else {
 		r->result = reply;
+		r->err = NULL;
 	}
 	uv_mutex_unlock(&(r2mysql->lock));
 }
@@ -160,7 +167,7 @@ query_work(uv_work_t* req) {
 static void
 after_query_complete(uv_work_t* req, int status) {
 	struct query_req* r = (query_req*)req->data;
-	r->query_cb(r->err, r->result);
+	r->query_cb(r->err, r->result, r->udata);
 
 	if (r->cmd) {
 		my_free(r->cmd);
@@ -179,7 +186,8 @@ after_query_complete(uv_work_t* req, int status) {
 void
 redis_wrapper::query(void* context,
 	char* cmd,
-	void (*query_cb)(const char* err, redisReply* result)) {
+	void (*query_cb)(const char* err, redisReply* result, void* udata),
+	void* udata) {
 	struct redis_context* c = (struct redis_context*)context;
 	// c->is_closed = 1;
 	if (c->is_closed) {
@@ -195,7 +203,7 @@ redis_wrapper::query(void* context,
 	r->context = context;
 	r->cmd = strdup(cmd);
 	r->query_cb = query_cb;
-
+	r->udata = udata;
 	w->data = r;
 
 	uv_queue_work(uv_default_loop(), w, query_work, after_query_complete);

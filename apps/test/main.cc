@@ -13,10 +13,10 @@ using namespace std;
 #include "../../db/redis_wrapper.h"
 #include "../../utils/logManager.h"
 #include "../../utils/timestamp.h"
-#include "../../scripts/lua_wrapper.h"
+#include "../../lua_wrapper/lua_wrapper.h"
 
 static void
-on_query_cb(const char* err, std::vector<std::vector<std::string>>* result) {
+on_query_cb(const char* err, MYSQL_RES* result, void* udata) {
 	if (err) {
 		printf("err %s\n", err);
 		return;
@@ -26,7 +26,7 @@ on_query_cb(const char* err, std::vector<std::vector<std::string>>* result) {
 }
 
 static void
-on_open_db(const char* err, void* context) {
+on_open_cb(const char* err, void* context, void* udata) {
 	if (err != NULL) {
 		printf("%s\n", err);
 		return;
@@ -40,11 +40,11 @@ on_open_db(const char* err, void* context) {
 
 static void
 test_db() {
-	mysql_wrapper::connect("127.0.0.1", 3306, "class_data", "root", "null980311", on_open_db);
+	mysql_wrapper::connect("127.0.0.1", 3306, "class_data", "root", "null980311", on_open_cb);
 }
 
 static void 
-on_query_redis(const char* err, redisReply* result) {
+on_query_redis(const char* err, redisReply* result, void* udata) {
 	if (err) {
 		printf("%s\n", err);
 		return;
@@ -54,7 +54,7 @@ on_query_redis(const char* err, redisReply* result) {
 }
 
 static void
-on_redis_open(const char* err, void* context) {
+on_redis_open(const char* err, void* context, void* udata) {
 	if (err != NULL) {
 		printf("%s\n", err);
 		return;

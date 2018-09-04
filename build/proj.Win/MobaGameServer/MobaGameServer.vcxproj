@@ -89,11 +89,20 @@
     <ClCompile Include="..\..\..\3rd\lua-5.3.5\src\lvm.c" />
     <ClCompile Include="..\..\..\3rd\lua-5.3.5\src\lzio.c" />
     <ClCompile Include="..\..\..\3rd\mjson\json.c" />
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_event.c" />
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_fix.cc" />
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_is.c" />
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_map.c" />
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_push.c" />
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_to.c" />
     <ClCompile Include="..\..\..\apps\test\main.cc" />
     <ClCompile Include="..\..\..\apps\test\proto\game.pb.cc" />
     <ClCompile Include="..\..\..\apps\test\proto\pf_cmd_map.cc" />
     <ClCompile Include="..\..\..\db\mysql_wrapper.cc" />
     <ClCompile Include="..\..\..\db\redis_wrapper.cc" />
+    <ClCompile Include="..\..\..\lua_wrapper\lua_wrapper.cc" />
+    <ClCompile Include="..\..\..\lua_wrapper\mysql_export2lua.cc" />
+    <ClCompile Include="..\..\..\lua_wrapper\redis_export2lua.cc" />
     <ClCompile Include="..\..\..\netbus\netbus.cc" />
     <ClCompile Include="..\..\..\netbus\proto_man.cc" />
     <ClCompile Include="..\..\..\netbus\service.cc" />
@@ -102,7 +111,6 @@
     <ClCompile Include="..\..\..\netbus\tcp_protocol.cc" />
     <ClCompile Include="..\..\..\netbus\udp_session.cc" />
     <ClCompile Include="..\..\..\netbus\websocket.cc" />
-    <ClCompile Include="..\..\..\scripts\lua_wrapper.cc" />
     <ClCompile Include="..\..\..\utils\cache_alloc.c" />
     <ClCompile Include="..\..\..\utils\logManager.cc" />
     <ClCompile Include="..\..\..\utils\timelist.c" />
@@ -166,10 +174,16 @@
     <ClInclude Include="..\..\..\3rd\lua-5.3.5\src\lvm.h" />
     <ClInclude Include="..\..\..\3rd\lua-5.3.5\src\lzio.h" />
     <ClInclude Include="..\..\..\3rd\mjson\json.h" />
+    <ClInclude Include="..\..\..\3rd\tolua\tolua++.h" />
+    <ClInclude Include="..\..\..\3rd\tolua\tolua_event.h" />
+    <ClInclude Include="..\..\..\3rd\tolua\tolua_fix.h" />
     <ClInclude Include="..\..\..\apps\test\proto\game.pb.h" />
     <ClInclude Include="..\..\..\apps\test\proto\pf_cmd_map.h" />
     <ClInclude Include="..\..\..\db\mysql_wrapper.h" />
     <ClInclude Include="..\..\..\db\redis_wrapper.h" />
+    <ClInclude Include="..\..\..\lua_wrapper\lua_wrapper.h" />
+    <ClInclude Include="..\..\..\lua_wrapper\mysql_export2lua.h" />
+    <ClInclude Include="..\..\..\lua_wrapper\redis_export2lua.h" />
     <ClInclude Include="..\..\..\netbus\netbus.h" />
     <ClInclude Include="..\..\..\netbus\proto_man.h" />
     <ClInclude Include="..\..\..\netbus\service.h" />
@@ -179,7 +193,6 @@
     <ClInclude Include="..\..\..\netbus\tcp_protocol.h" />
     <ClInclude Include="..\..\..\netbus\udp_session.h" />
     <ClInclude Include="..\..\..\netbus\websocket.h" />
-    <ClInclude Include="..\..\..\scripts\lua_wrapper.h" />
     <ClInclude Include="..\..\..\utils\cache_alloc.h" />
     <ClInclude Include="..\..\..\utils\logManager.h" />
     <ClInclude Include="..\..\..\utils\timelist.h" />
@@ -255,7 +268,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Moba_Server\3rd\lua-5.3.5\src;D:\Moba_Server\build\proj.Win\hiredis\include;D:\Moba_Server\3rd\libuv\include;D:\Moba_Server\3rd\protobuf-3.5.1\src;D:\Moba_Server\build\proj.Win\mysqlclient\mysql.x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Moba_Server\3rd\tolua;D:\Moba_Server\3rd\lua-5.3.5\src;D:\Moba_Server\build\proj.Win\hiredis\include;D:\Moba_Server\3rd\libuv\include;D:\Moba_Server\3rd\protobuf-3.5.1\src;D:\Moba_Server\build\proj.Win\mysqlclient\mysql.x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>

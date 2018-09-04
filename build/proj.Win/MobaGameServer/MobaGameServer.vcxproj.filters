@@ -47,7 +47,10 @@
     <Filter Include="3rd\lua">
       <UniqueIdentifier>{9cebb95c-6fee-49d5-b34f-e3d9dca4f990}</UniqueIdentifier>
     </Filter>
-    <Filter Include="scripts">
+    <Filter Include="3rd\tolua">
+      <UniqueIdentifier>{8787c0dc-7c73-483a-b9da-dd6de4c8c7f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua_wrapper">
       <UniqueIdentifier>{ad2648bd-869f-47df-8531-a0699d2ddaf2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -313,8 +316,32 @@
     <ClCompile Include="..\..\..\3rd\lua-5.3.5\src\lzio.c">
       <Filter>3rd\lua</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\scripts\lua_wrapper.cc">
-      <Filter>scripts</Filter>
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_event.c">
+      <Filter>3rd\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_fix.cc">
+      <Filter>3rd\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_is.c">
+      <Filter>3rd\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_map.c">
+      <Filter>3rd\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_push.c">
+      <Filter>3rd\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\3rd\tolua\tolua_to.c">
+      <Filter>3rd\tolua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lua_wrapper\lua_wrapper.cc">
+      <Filter>lua_wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lua_wrapper\mysql_export2lua.cc">
+      <Filter>lua_wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lua_wrapper\redis_export2lua.cc">
+      <Filter>lua_wrapper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -358,9 +385,6 @@
       <Filter>3rd\libuv\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\3rd\libuv\include\uv-version.h">
-      <Filter>3rd\libuv\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\3rd\libuv\include\uv-win.h">
       <Filter>3rd\libuv\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\3rd\libuv\src\heap-inl.h">
@@ -540,8 +564,26 @@
     <ClInclude Include="..\..\..\3rd\lua-5.3.5\src\lzio.h">
       <Filter>3rd\lua</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\scripts\lua_wrapper.h">
-      <Filter>scripts</Filter>
+    <ClInclude Include="..\..\..\3rd\libuv\include\uv-win.h">
+      <Filter>3rd\libuv\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\tolua\tolua_event.h">
+      <Filter>3rd\tolua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\tolua\tolua_fix.h">
+      <Filter>3rd\tolua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\3rd\tolua\tolua++.h">
+      <Filter>3rd\tolua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lua_wrapper\lua_wrapper.h">
+      <Filter>lua_wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lua_wrapper\mysql_export2lua.h">
+      <Filter>lua_wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lua_wrapper\redis_export2lua.h">
+      <Filter>lua_wrapper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
