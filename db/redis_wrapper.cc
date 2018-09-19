@@ -15,9 +15,23 @@
 
 #include "uv.h"
 #include "redis_wrapper.h"
+#include "../utils/small_alloc.h"
 
-#define my_malloc malloc
-#define my_free free
+#define my_malloc small_alloc
+#define my_free small_free
+
+static char*
+my_strdup(const char* src) {
+	int len = strlen(src) + 1;
+	char* dst = (char*)my_malloc(len);
+	strcpy(dst, src);
+	return dst;
+}
+
+static void
+free_strdup(char* str) {
+	my_free(str);
+}
 
 struct connect_req {
 	char* ip;
@@ -44,7 +58,7 @@ connect_work(uv_work_t* req) {
 	redisContext* rcontext = redisConnectWithTimeout(connReq->ip, connReq->port, timeout);
 	if (rcontext->err) {
 		printf("Connection error: %s\n", rcontext->errstr);
-		connReq->err = strdup(rcontext->errstr);
+		connReq->err = my_strdup(rcontext->errstr);
 		connReq->context = NULL;
 		redisFree(rcontext);
 	} else {
@@ -64,10 +78,10 @@ after_connwork_complete(uv_work_t* req, int status) {
 	connReq->open_cb(connReq->err, connReq->context, connReq->udata);
 
 	if (connReq->ip) {
-		free(connReq->ip);
+		free_strdup(connReq->ip);
 	}
 	if (connReq->err) {
-		free(connReq->err);
+		free_strdup(connReq->err);
 	}
 
 	my_free(connReq);
@@ -85,7 +99,7 @@ redis_wrapper::connect(char* ip,
 	struct connect_req* req = (struct connect_req*)my_malloc(sizeof(struct connect_req));
 	memset(req, 0, sizeof(connect_req));
 
-	req->ip = strdup(ip);
+	req->ip = my_strdup(ip);
 	req->port = port;
 	req->udata = udata;
 	req->open_cb = open_cb;
@@ -154,7 +168,7 @@ query_work(uv_work_t* req) {
 	uv_mutex_lock(&(r2mysql->lock));
 	redisReply* reply = (redisReply*)redisCommand(rc, r->cmd);
 	if (reply->type == REDIS_REPLY_ERROR) {
-		r->err = strdup(reply->str);
+		r->err = my_strdup(reply->str);
 		r->result = NULL;
 		freeReplyObject(reply);
 	} else {
@@ -201,7 +215,7 @@ redis_wrapper::query(void* context,
 	memset(r, 0, sizeof(struct query_req));
 
 	r->context = context;
-	r->cmd = strdup(cmd);
+	r->cmd = my_strdup(cmd);
 	r->query_cb = query_cb;
 	r->udata = udata;
 	w->data = r;

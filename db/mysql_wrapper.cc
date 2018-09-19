@@ -11,11 +11,24 @@
 #endif
 
 #include "mysql.h"
-
 #include "mysql_wrapper.h"
+#include "../utils/small_alloc.h"
 
-#define my_malloc malloc
-#define my_free free
+#define my_malloc small_alloc
+#define my_free small_free
+
+static char*
+my_strdup(const char* src) {
+	int len = strlen(src) + 1;
+	char* dst = (char*)my_malloc(len);
+	strcpy(dst, src);
+	return dst;
+}
+
+static void
+free_strdup(char* str) {
+	my_free(str);
+}
 
 struct connect_req {
 	char* ip;
@@ -57,7 +70,7 @@ connect_work(uv_work_t* req) {
 		connReq->err = NULL;
 	} else {
 		connReq->context = NULL;
-		connReq->err = strdup(mysql_error(pConn));
+		connReq->err = my_strdup(mysql_error(pConn));
 	}
 }
 
@@ -67,19 +80,19 @@ after_connwork_complete(uv_work_t* req, int status) {
 	connReq->open_cb(connReq->err, connReq->context, connReq->udata);
 
 	if (connReq->ip) {
-		free(connReq->ip);
+		free_strdup(connReq->ip);
 	}
 	if (connReq->db_name) {
-		free(connReq->db_name);
+		free_strdup(connReq->db_name);
 	}
 	if (connReq->uname) {
-		free(connReq->uname);
+		free_strdup(connReq->uname);
 	}
 	if (connReq->upwd) {
-		free(connReq->upwd);
+		free_strdup(connReq->upwd);
 	}
 	if (connReq->err) {
-		free(connReq->err);
+		free_strdup(connReq->err);
 	}
 
 	my_free(connReq);
@@ -101,11 +114,11 @@ mysql_wrapper::connect(char* ip,
 	struct connect_req* req = (struct connect_req*)my_malloc(sizeof(struct connect_req));
 	memset(req, 0, sizeof(connect_req));
 
-	req->ip = strdup(ip);
+	req->ip = my_strdup(ip);
 	req->port = port;
-	req->db_name = strdup(db_name);
-	req->uname = strdup(uname);
-	req->upwd = strdup(pwd);
+	req->db_name = my_strdup(db_name);
+	req->uname = my_strdup(uname);
+	req->upwd = my_strdup(pwd);
 	req->open_cb = open_cb;
 	req->udata = udata;
 
@@ -175,7 +188,7 @@ query_work(uv_work_t* req) {
 
 	int ret = mysql_query(pConn, r->sql);
 	if (ret != 0) {
-		r->err = strdup(mysql_error(pConn));
+		r->err = my_strdup(mysql_error(pConn));
 		r->result = NULL;
 		uv_mutex_unlock(&(r2mysql->lock));
 		return;
@@ -251,7 +264,7 @@ mysql_wrapper::query(void* context,
 	memset(r, 0, sizeof(query_req));
 
 	r->context = context;
-	r->sql = strdup(sql);
+	r->sql = my_strdup(sql);
 	r->query_cb = query_cb;
 	r->udata = udata;
 	w->data = r;

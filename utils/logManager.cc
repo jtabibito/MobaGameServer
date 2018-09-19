@@ -25,7 +25,7 @@ static char g_format_time[64] = { 0 };
 static char* g_log_modle[] = { " DEBUG ", " WARING ", " ERROR " };
 
 void
-log::init(char* path,
+logger::init(char* path,
 	char* prefix,
 	bool std_output) {
 	g_log_path = path;
@@ -99,7 +99,7 @@ format_time() {
 }
 
 void 
-log::write2log(const char* file_name,
+logger::write2log(const char* file_name,
 	int line_num,
 	int modle,
 	const char* msg,

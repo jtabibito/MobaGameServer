@@ -1,13 +1,34 @@
-﻿  redis_wrapper.cc
-d:\moba_server\db\redis_wrapper.cc(47): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(538): note: 参见“strdup”的声明
-d:\moba_server\db\redis_wrapper.cc(88): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(538): note: 参见“strdup”的声明
-d:\moba_server\db\redis_wrapper.cc(157): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(538): note: 参见“strdup”的声明
-d:\moba_server\db\redis_wrapper.cc(204): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(538): note: 参见“strdup”的声明
-  redis_export2lua.cc
-d:\moba_server\lua_wrapper\redis_export2lua.cc(82): warning C4018: “<”: 有符号/无符号不匹配
+﻿  main.cc
+  netbus_export2lua.cc
+  session_export2lua.cpp
+d:\moba_server\lua_wrapper\session_export2lua.cpp(86): warning C4244: “初始化”: 从“lua_Number”转换到“float”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(92): warning C4244: “初始化”: 从“lua_Number”转换到“int64_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(98): warning C4244: “初始化”: 从“lua_Number”转换到“uint64_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(104): warning C4244: “初始化”: 从“lua_Number”转换到“int32_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(112): warning C4244: “初始化”: 从“lua_Number”转换到“int32_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(118): warning C4244: “初始化”: 从“lua_Number”转换到“uint32_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(177): warning C4244: “初始化”: 从“lua_Number”转换到“float”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(183): warning C4244: “初始化”: 从“lua_Number”转换到“int64_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(189): warning C4244: “初始化”: 从“lua_Number”转换到“uint64_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(195): warning C4244: “初始化”: 从“lua_Number”转换到“int32_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(203): warning C4244: “初始化”: 从“lua_Number”转换到“int32_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(209): warning C4244: “初始化”: 从“lua_Number”转换到“uint32_t”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(266): warning C4244: “初始化”: 从“lua_Integer”转换到“int”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(273): warning C4244: “=”: 从“lua_Integer”转换到“int”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(277): warning C4244: “=”: 从“lua_Integer”转换到“int”，可能丢失数据
+d:\moba_server\lua_wrapper\session_export2lua.cpp(281): warning C4244: “=”: 从“lua_Integer”转换到“unsigned int”，可能丢失数据
+  netbus.cc
+d:\moba_server\netbus\netbus.cc(392): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note: 参见“strcpy”的声明
+  session_uv.cc
+  udp_session.cc
+  websocket.cc
+d:\moba_server\netbus\websocket.cc(54): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(337): note: 参见“strncpy”的声明
+d:\moba_server\netbus\websocket.cc(82): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: 参见“sprintf”的声明
+d:\moba_server\netbus\websocket.cc(88): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: 参见“sprintf”的声明
   正在生成代码...
+d:\moba_server\netbus\netbus.cc(380): warning C4700: 使用了未初始化的局部变量“bind_addr”
   MobaGameServer.vcxproj -> D:\Moba_Server\build\proj.Win\Debug\MobaGameServer.exe

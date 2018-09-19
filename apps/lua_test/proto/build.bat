@@ -1,0 +1,1 @@
+D:\Moba_Server\apps\lua_test\proto\protoc.exe --cpp_out=./ game.proto

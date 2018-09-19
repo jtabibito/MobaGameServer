@@ -1,0 +1,16 @@
+2018-09-17 21:36:01 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-17 21:36:01 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-17 21:36:59 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:44
+127.0.0.1 : 26617 quit the room
+2018-09-17 21:39:40 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-17 21:39:40 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-17 21:40:01 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:44
+127.0.0.1 : 26862 quit the room
+2018-09-17 21:41:09 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:44
+127.0.0.1 : 26948 quit the room
+2018-09-17 21:41:59 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:44
+127.0.0.1 : 27001 quit the room

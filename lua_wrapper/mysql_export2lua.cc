@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "lua_wrapper.h"
 #include "../db/mysql_wrapper.h"
 #include "mysql_export2lua.h"
-#include "lua_wrapper.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -140,8 +140,8 @@ register_mysql_export(lua_State* L) {
 	lua_getglobal(L, "_G");
 	if (lua_istable(L, -1)) {
 		tolua_open(L);
-		tolua_module(L, "mysql_wrapper", 0);
-		tolua_beginmodule(L, "mysql_wrapper");
+		tolua_module(L, "MySqlWrapper", 0);
+		tolua_beginmodule(L, "MySqlWrapper");
 		tolua_function(L, "connect", lua_mysql_connect);
 		tolua_function(L, "close_mysql", lua_mysql_close);
 		tolua_function(L, "query", lua_mysql_query);

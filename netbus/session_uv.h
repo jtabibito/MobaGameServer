@@ -9,12 +9,13 @@ enum {
 	WS_SOCKET,
 };
 
-class uv_session : session {
+class uv_session : public session {
 public:
 	// 保存malloc的结构
-	char* ipaddr[32];
-	int client_port;
 	uv_tcp_t tcp_handle;
+	char ipaddr[32];
+	int client_port;
+
 	uv_shutdown_t shutdown;
 	bool isShutdown;	// 避免重复shutdown
 	/*uv_write_t w_req;

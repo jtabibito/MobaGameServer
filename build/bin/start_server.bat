@@ -1,0 +1,1 @@
+D:/Moba_Server/build/proj.Win/Debug/MobaGameServer.exe ../../apps/lua_test/scripts/main.lua

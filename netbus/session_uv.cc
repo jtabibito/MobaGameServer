@@ -73,7 +73,7 @@ uv_session::create() {
 
 	uv_s->init_session();
 
-	return (uv_session*)uv_s;	//temp
+	return uv_s;	//temp
 }
 
 void
@@ -154,13 +154,13 @@ uv_session::send_data(unsigned char* body, int len) {
 const char*
 uv_session::get_address(int* client_port) {
 	*client_port = this->client_port;
-	return *(this->ipaddr);
+	return this->ipaddr;
 }
 
 void
 uv_session::send_msg(struct cmd_msg* msg) {
 	unsigned char* encode_pkg = NULL;
-	int encode_len;
+	int encode_len = 0;
 	encode_pkg = proto_man::encode_msg_to_raw(msg, &encode_len);
 	if (encode_pkg) {
 		this->send_data(encode_pkg, encode_len);

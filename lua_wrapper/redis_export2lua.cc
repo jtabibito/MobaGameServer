@@ -2,9 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "lua_wrapper.h"
 #include "../db/redis_wrapper.h"
 #include "redis_export2lua.h"
-#include "lua_wrapper.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -133,8 +133,8 @@ register_redis_export(lua_State* L) {
 	lua_getglobal(L, "_G");
 	if (lua_istable(L, -1)) {
 		tolua_open(L);
-		tolua_module(L, "redis_wrapper", 0);
-		tolua_beginmodule(L, "redis_wrapper");
+		tolua_module(L, "RedisWrapper", 0);
+		tolua_beginmodule(L, "RedisWrapper");
 		tolua_function(L, "connect", lua_redis_connect);
 		tolua_function(L, "close_redis", lua_redis_close);
 		tolua_function(L, "query", lua_redis_query);

@@ -11,10 +11,14 @@ using namespace std;
 #include "udp_session.h"
 
 #include "../utils/cache_alloc.h"
+#include "../utils/small_alloc.h"
 #include "websocket.h"
 #include "tcp_protocol.h"
 #include "proto_man.h"
 #include "service_man.h"
+
+#define my_alloc small_alloc
+#define my_free small_free
 
 void 
 udp_session::close() {
@@ -26,14 +30,14 @@ on_uv_udp_send_end(uv_udp_send_t* req, int status) {
 	if (status == 0) {
 		// 
 	}
-	free(req);
+	my_free(req);
 }
 
 void
 udp_session::send_data(unsigned char* body, int len) {
 	uv_buf_t w_buf;
 	w_buf = uv_buf_init((char*)body, len);
-	uv_udp_send_t* req = (uv_udp_send_t*)malloc(sizeof(uv_udp_send_t));
+	uv_udp_send_t* req = (uv_udp_send_t*)my_alloc(sizeof(uv_udp_send_t));
 
 	uv_udp_send(req, this->udp_handle, &w_buf, 1, this->addr, on_uv_udp_send_end);
 }

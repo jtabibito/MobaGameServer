@@ -1,0 +1,178 @@
+2018-09-19 09:59:56 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 09:59:56 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:08:34 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:08:34 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:14:02 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:14:02 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:14:54 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:14:54 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:21:05 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:21:05 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:26:08 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:26:08 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:28:47 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:28:47 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:29:17 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:29:17 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 10:40:43 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 10:40:43 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 11:07:18 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 11:07:18 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 11:07:35 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+192.168.1.105 : 17854 quit the room
+2018-09-19 11:09:27 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 18009 quit the room
+2018-09-19 11:14:52 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41746 quit the room
+2018-09-19 11:15:47 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41746 quit the room
+2018-09-19 11:16:01 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41746 quit the room
+2018-09-19 11:16:12 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:88
+172.21.144.62 : 41770 disconnect
+2018-09-19 11:16:23 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:88
+192.168.1.105 : 18568 disconnect
+2018-09-19 11:19:41 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 19005 quit the room
+2018-09-19 11:29:01 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41964 quit the room
+2018-09-19 11:29:07 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41964 quit the room
+2018-09-19 11:29:09 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41964 quit the room
+2018-09-19 11:29:11 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41964 quit the room
+2018-09-19 11:29:17 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41964 quit the room
+2018-09-19 11:29:20 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41964 quit the room
+2018-09-19 11:29:23 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.62 : 41964 quit the room
+2018-09-19 14:00:36 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:88
+172.21.144.62 : 41964 disconnect
+2018-09-19 14:02:54 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 14:02:54 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 14:05:19 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 20508 quit the room
+2018-09-19 14:11:24 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 46022 quit the room
+2018-09-19 14:11:37 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 46022 quit the room
+2018-09-19 14:11:55 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 46022 quit the room
+2018-09-19 14:12:26 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 46022 quit the room
+2018-09-19 14:12:39 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 46022 quit the room
+2018-09-19 14:12:49 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 21206 quit the room
+2018-09-19 14:12:54 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 21206 quit the room
+2018-09-19 14:54:20 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 14:54:20 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 14:57:19 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Start Server Success
+2018-09-19 14:57:19 DEBUG ../../apps/lua_test/scripts/main.lua:33
+register trm service success
+2018-09-19 15:04:45 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:35
+172.21.144.46 : 46220 quit the room
+2018-09-19 15:16:43 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:86
+172.21.144.63 : 39260 disconnect
+2018-09-19 15:24:33 DEBUG ../../apps/lua_test/scripts/main.lua:25
+开启服务器成功
+2018-09-19 15:24:33 DEBUG ../../apps/lua_test/scripts/main.lua:33
+成功注册聊天室Service
+2018-09-19 15:25:38 DEBUG ../../apps/lua_test/scripts/main.lua:25
+开启服务器成功
+2018-09-19 15:25:38 DEBUG ../../apps/lua_test/scripts/main.lua:33
+成功注册聊天室Service
+2018-09-19 15:25:54 DEBUG ../../apps/lua_test/scripts/main.lua:25
+开启服务器成功
+2018-09-19 15:25:54 DEBUG ../../apps/lua_test/scripts/main.lua:33
+成功注册聊天室Service
+2018-09-19 15:26:06 DEBUG ../../apps/lua_test/scripts/main.lua:25
+开启服务器成功
+2018-09-19 15:26:06 DEBUG ../../apps/lua_test/scripts/main.lua:33
+成功注册聊天室Service
+2018-09-19 15:26:27 DEBUG ../../apps/lua_test/scripts/main.lua:25
+开启服务器成功
+2018-09-19 15:26:27 DEBUG ../../apps/lua_test/scripts/main.lua:33
+成功注册聊天室Service
+2018-09-19 15:27:42 DEBUG ../../apps/lua_test/scripts/main.lua:25
+开启服务器成功
+2018-09-19 15:27:42 DEBUG ../../apps/lua_test/scripts/main.lua:33
+成功注册聊天室Service
+2018-09-19 15:36:40 DEBUG ../../apps/lua_test/scripts/main.lua:25
+START SERVER: SUCCESSED
+2018-09-19 15:36:40 DEBUG ../../apps/lua_test/scripts/main.lua:33
+REGISTE TALKINGROOM SERVICE: SUCCESSED
+2018-09-19 15:37:07 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:29
+127.0.0.1:29939have been join the room.
+2018-09-19 15:37:19 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:38
+127.0.0.1 : 29939 quit the room.
+2018-09-19 16:28:07 DEBUG ../../apps/lua_test/scripts/main.lua:25
+---START SERVER: SUCCESSED
+2018-09-19 16:28:07 DEBUG ../../apps/lua_test/scripts/main.lua:33
+---REGISTE TALKINGROOM SERVICE: SUCCESSED
+2018-09-19 16:28:23 DEBUG ../../apps/lua_test/scripts/main.lua:25
+---START SERVER: SUCCESSED
+2018-09-19 16:28:23 DEBUG ../../apps/lua_test/scripts/main.lua:33
+---REGISTE TALKINGROOM SERVICE: SUCCESSED
+2018-09-19 16:28:34 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:29
+>>>127.0.0.1:34716 have been join the room.
+2018-09-19 16:28:37 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:38
+<<<127.0.0.1 : 34716 quit the room.
+2018-09-19 16:28:39 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:29
+>>>127.0.0.1:34716 have been join the room.
+2018-09-19 16:28:40 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:38
+<<<127.0.0.1 : 34716 quit the room.
+2018-09-19 16:28:45 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:29
+>>>127.0.0.1:34716 have been join the room.
+2018-09-19 16:28:51 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:38
+<<<127.0.0.1 : 34716 quit the room.
+2018-09-19 16:28:57 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:29
+>>>127.0.0.1:34716 have been join the room.
+2018-09-19 16:29:01 ERROR d:\moba_server\lua_wrapper\service_export2lua.cc:98
+[LUA ERROR] ../../apps/lua_test/scripts/talkingRoom.lua:17: attempt to concatenate a nil value (global 'port')
+2018-09-19 16:36:43 DEBUG ../../apps/lua_test/scripts/main.lua:25
+---START SERVER: SUCCESSED
+2018-09-19 16:36:43 DEBUG ../../apps/lua_test/scripts/main.lua:33
+---REGISTE TALKINGROOM SERVICE: SUCCESSED
+2018-09-19 16:36:51 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:29
+>>>127.0.0.1:35511 have been join the room.
+2018-09-19 16:36:52 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:17
+>>>127.0.0.1:35511 repeated join the room.
+2018-09-19 16:36:56 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:17
+>>>127.0.0.1:35511 repeated join the room.
+2018-09-19 16:36:57 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:17
+>>>127.0.0.1:35511 repeated join the room.
+2018-09-19 16:36:57 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:17
+>>>127.0.0.1:35511 repeated join the room.
+2018-09-19 16:36:58 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:17
+>>>127.0.0.1:35511 repeated join the room.
+2018-09-19 16:37:01 DEBUG ../../apps/lua_test/scripts/talkingRoom.lua:38
+<<<127.0.0.1 : 35511 quit the room.

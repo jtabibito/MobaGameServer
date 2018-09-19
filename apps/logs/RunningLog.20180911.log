@@ -1,0 +1,76 @@
+2018-09-11 09:45:27 DEBUG ../../apps/lua_test/scripts/main.lua:19
+Server Run Success
+2018-09-11 09:48:18 DEBUG ../../apps/lua_test/scripts/main.lua:19
+Server Run Success
+2018-09-11 13:57:08 ERROR trunk:0
+../../apps/lua_test/scripts/main.lua:13: module 'cmd_name_map' not found:
+	no field package.preload['cmd_name_map']
+	no file 'D:\Moba_Server\build\proj.Win\Debug\lua\cmd_name_map.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\lua\cmd_name_map\init.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\cmd_name_map.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\cmd_name_map\init.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\..\share\lua\5.3\cmd_name_map.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\..\share\lua\5.3\cmd_name_map\init.lua'
+	no file '.\cmd_name_map.lua'
+	no file '.\cmd_name_map\init.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\cmd_name_map.dll'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\..\lib\lua\5.3\cmd_name_map.dll'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\loadall.dll'
+	no file '.\cmd_name_map.dll'
+2018-09-11 13:58:41 ERROR trunk:0
+../../apps/lua_test/scripts/main.lua:13: module 'cmd_name_map' not found:
+	no field package.preload['cmd_name_map']
+	no file 'D:\Moba_Server\build\proj.Win\Debug\lua\cmd_name_map.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\lua\cmd_name_map\init.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\cmd_name_map.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\cmd_name_map\init.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\..\share\lua\5.3\cmd_name_map.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\..\share\lua\5.3\cmd_name_map\init.lua'
+	no file '.\cmd_name_map.lua'
+	no file '.\cmd_name_map\init.lua'
+	no file '../../apps/lua_test/cmd_name_map.lua'
+	no file '../../apps/lua_test/cmd_name_map/init.lua'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\cmd_name_map.dll'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\..\lib\lua\5.3\cmd_name_map.dll'
+	no file 'D:\Moba_Server\build\proj.Win\Debug\loadall.dll'
+	no file '.\cmd_name_map.dll'
+2018-09-11 14:05:25 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 14:11:50 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 14:11:56 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 14:12:46 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 14:15:13 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 19:21:08 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 19:32:58 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 19:35:02 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 19:37:36 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 19:40:07 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 19:41:29 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 19:42:54 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 20:44:31 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 21:00:03 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 21:02:52 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 21:19:02 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 21:22:34 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 21:25:06 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 21:37:11 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success
+2018-09-11 21:39:08 DEBUG ../../apps/lua_test/scripts/main.lua:25
+Server Run Success

@@ -103,14 +103,19 @@ extern "C" {
 		} else {
 			if (s->long_pkg == NULL) {	// 数据包无法读完, 分配出内存
 				if (s->prototype == WS_SOCKET && s->isWS_shake) {    // websocket > RECV_LEN 的包
-					int pkg_sz;
-					int head_sz;
-					ws_protocol::read_ws_header((unsigned char*)s->recv_buf, s->recved, &pkg_sz, &head_sz);
-					s->longpkg_sz = pkg_sz;
-					s->long_pkg = (char*)malloc(pkg_sz);
+					int pkg_size;
+					int head_size;
+					ws_protocol::read_ws_header((unsigned char*)s->recv_buf, s->recved, &pkg_size, &head_size);
+					s->longpkg_sz = pkg_size;
+					s->long_pkg = (char*)malloc(pkg_size);
 					memcpy(s->long_pkg, s->recv_buf, s->recved);
 				} else {	// tcp > RECV_LEN 的包
-
+					int pkg_size;
+					int head_size;
+					tcp_protocol::read_header((unsigned char*)s->recv_buf, s->recved, &pkg_size, &head_size);
+					s->longpkg_sz = pkg_size;
+					s->long_pkg = (char*)malloc(pkg_size);
+					memcpy(s->long_pkg, s->recv_buf, s->recved);
 				}
 			}
 			*buf = uv_buf_init(s->recv_buf + s->recved, s->longpkg_sz - s->recved);
@@ -236,7 +241,7 @@ extern "C" {
 			int pkg_sz = 0;
 			int head_sz = 0;
 			// pkg_sz - head_sz = body_sz;
-			if (tcp_protocol::read_header(pkg_data, s->recved, &pkg_sz, &head_sz) == -1) {
+			if (!tcp_protocol::read_header(pkg_data, s->recved, &pkg_sz, &head_sz)) {
 				break;
 			}
 
@@ -267,7 +272,7 @@ netbus* netbus::instance() {
 }
 
 void
-netbus::start_tcp_server(int port) {
+netbus::tcp_listen(int port) {
 	uv_tcp_t* listen = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
 	memset(listen, 0, sizeof(uv_tcp_t));
 
@@ -288,7 +293,7 @@ netbus::start_tcp_server(int port) {
 }
 
 void
-netbus::start_udp_server(int port) {
+netbus::udp_listen(int port) {
 	uv_udp_t* server = (uv_udp_t*)malloc(sizeof(uv_udp_t));
 	memset(server, 0, sizeof(uv_udp_t));
 
@@ -307,7 +312,7 @@ netbus::start_udp_server(int port) {
 }
 
 void
-netbus::start_ws_server(int port) {
+netbus::ws_listen(int port) {
 	uv_tcp_t* listen = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
 	memset(listen, 0, sizeof(uv_tcp_t));
 
@@ -336,4 +341,65 @@ void
 netbus::init() {
 	service_man::init();
 	init_session_allocer();
+}
+
+struct connect_cb {
+	void(*on_connected)(int err, session* s, void* udata);
+	void* udata;
+};
+
+static void 
+after_connect(uv_connect_t* req,
+	int status) {
+	uv_session* s = (uv_session*)req->handle->data;
+	struct connect_cb* cb = (struct connect_cb*)req->data;
+
+	if (status) {
+		if (cb->on_connected) {
+			cb->on_connected(1, NULL, cb->udata);
+		}
+		s->close();
+		free(cb);
+		free(req);
+		return;
+	}
+
+	uv_read_start(req->handle, uv_alloc_buf, after_read);
+	if (cb->on_connected) {
+		cb->on_connected(0, (session*)s, cb->udata);
+	}
+	free(cb);
+	free(req);
+}
+
+void
+netbus::connect2otherServer(char* server_ip, int port,
+							void(*on_connected)(int err, session* s, void* udata),
+							void* udata) {
+	struct sockaddr_in* bind_addr;
+	int ret = uv_ip4_addr(server_ip, port, bind_addr);
+	if (ret) {
+		return;
+	}
+
+	uv_session* s = (uv_session*)uv_session::create();
+	uv_tcp_t* client = &(s->tcp_handle);
+	memset(client, 0, sizeof(uv_tcp_t));
+	uv_tcp_init(uv_default_loop(), client);
+	client->data = (void*)s;
+	s->as_client = 1;
+	s->prototype = TCP_SOCKET;
+	strcpy(s->ipaddr, server_ip);
+	s->client_port = port;
+
+	uv_connect_t* connect_req = (uv_connect_t*)malloc(sizeof(uv_connect_t));
+	connect_cb* cb = (struct connect_cb*)malloc(sizeof(struct connect_cb));
+	cb->on_connected = on_connected;
+	cb->udata = udata;
+	connect_req->data = (void*)cb;
+
+	ret = uv_tcp_connect(connect_req, client, (const sockaddr*)&bind_addr, after_connect);
+	if (ret) {
+		return;
+	}
 }
